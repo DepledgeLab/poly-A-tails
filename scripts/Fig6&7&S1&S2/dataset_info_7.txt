@@ -1,0 +1,1 @@
+EMC1-MeWo-96h-polyA ../../transcriptomes/VZV-Dumas-v2.0-complete.fasta dumas ../input/EMC1-MeWo-96h-polyA-hac.v6.1.7_redo ../input//EMC1-MeWo-96h-polyA-hac.v6.1.7_redo/workspace/20230308_1540_MN32174_FAT75568_f6dd48b0/fast5_all

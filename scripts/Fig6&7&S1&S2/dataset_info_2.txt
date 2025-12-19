@@ -1,0 +1,1 @@
+HSV2-ARPE19-10h-1 ../../transcriptomes/HSV2-MS.complete.fasta  HSV2-MS ../input/HSV2-ARPE19-10h-1-hac.v6.1.7_redo ../input/HSV2-ARPE19-10h-1-hac.v6.1.7_redo/workspace/20211025_1359_MN26830_FAR15445_e81919df/fast5_pass

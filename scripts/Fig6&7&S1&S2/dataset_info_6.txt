@@ -1,0 +1,1 @@
+TB40_72h_CTRL-1 ../../transcriptomes/gencode.v47_TB40-BAC.v1.3_ENO2.transcripts.fasta gc47_TB40v1.3_ENO2.tx ../input/TB40_72h_CTRL-1-hac.v6.1.7 ../input/TB40_72h_CTRL-1-hac.v6.1.7/workspace/20201130_1639_MN24978_FAO99310_497d8769/fast5_all

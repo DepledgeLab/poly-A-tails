@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=64gb # Job memory request
 #SBATCH --time=01:00:00 # Time limit hrs:min:sec
-#SBATCH --output=../logs/%x_%j.log # Standard output and error log
+#SBATCH --output=../../logs/%x_%j.log # Standard output and error log
 #SBATCH -p <partition>
 
 # /================================================================================================\
@@ -22,12 +22,12 @@
 # |                                           VARIABLES                                            |
 # |________________________________________________________________________________________________|
 
-OUT=../data
-IN=../input
+OUT=./data
+IN=./raw
 GUPPY_PATH=/path/to/ont-guppy-6.1.7/bin/guppy_basecaller
 GUPPY_VER=6.1.7
 GUPPY_MOD=hac
-BASECALL_DIREC_BASE=../input
+BASECALL_DIREC_BASE=./input
 
 # /================================================================================================\
 # |                                         INITIALISATION                                         |
@@ -71,18 +71,26 @@ module load VBZ-Compression
 # |                                             CODE                                               |
 # |________________________________________________________________________________________________|
 
-while read NAME_BASE TX_REF TX_ABBR BASECALL_DIREC FAST5_DIREC;
+while read NAME_BASE TX_REF TX_ABBR LOREM IPSUM;
 
 do
 
 BASECALL_DIREC="$BASECALL_DIREC_BASE"/"$NAME_BASE"-"$GUPPY_MOD".v"$GUPPY_VER"
 NAME="$NAME_BASE".guppy."$GUPPY_MOD"."$GUPPY_VER"
-FAST5_DIREC="$BASECALL_DIREC"/workspace
 
         echo -e "\n================\n Begun "$NAME" \n================\n\n"
 
-### Pre-processing
-        echo -e "\n================\n Begun pre-processing \n================\n\n"
+### Basecalling
+        echo -e "\n================\n Begun basecalling \n================\n\n"
+        SECONDS=0
+
+        $GUPPY_PATH -i $IN/$NAME_BASE/ -s $BASECALL_DIREC -c rna_r9.4.1_70bps_hac.cfg -r --calib_detect --trim_strategy rna --reverse_sequence true -x auto --fast5_out
+
+        duration=$SECONDS
+        echo -e "\nFinished basecalling after $((duration / 3600)) hour(s), $(((duration / 60) % 60)) minute(s) and $((duration % 60)) second(s).\n----------\n"
+
+### Processing
+        echo -e "\n================\n Begun processing \n================\n\n"
         SECONDS=0
 
         cat $BASECALL_DIREC/pass/*.fastq > $OUT/"$NAME".fastq
@@ -90,15 +98,6 @@ FAST5_DIREC="$BASECALL_DIREC"/workspace
 
         duration=$SECONDS
         echo -e "\nFinished pre-processing after $((duration / 3600)) hour(s), $(((duration / 60) % 60)) minute(s) and $((duration % 60)) second(s).\n----------\n"
-
-### Basecalling
-        echo -e "\n================\n Begun basecalling \n================\n\n"
-        SECONDS=0
-
-        $GUPPY_PATH -i $IN/$NAME_BASE/ -s $BASECALL_DIREC -c rna_r9.4.1_70bps_hac.cfg -r --calib_detect  --trim_strategy rna --reverse_sequence true -x auto --fast5_out
-
-        duration=$SECONDS
-        echo -e "\nFinished basecalling after $((duration / 3600)) hour(s), $(((duration / 60) % 60)) minute(s) and $((duration % 60)) second(s).\n----------\n"
 
 ### Alignment
         echo -e "\n================\n Begun aligning \n================\n\n"
@@ -113,7 +112,7 @@ FAST5_DIREC="$BASECALL_DIREC"/workspace
         echo -e "\nFinished aligning after $((duration / 3600)) hours, $(((duration / 60) % 60)) minutes and $((duration % 60)) seconds.\n----------\n"
 
 
-done < dataset_info__${SLURM_ARRAY_TASK_ID}.txt
+done < dataset_info_${SLURM_ARRAY_TASK_ID}.txt
 
 
 # /================================================================================================\

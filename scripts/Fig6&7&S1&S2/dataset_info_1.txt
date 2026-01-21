@@ -1,1 +1,1 @@
-KSHV-iSLK-72h-1 ../../transcriptomes/KSHV-GK18-NC_009333-Renne2025.fasta KSHVtxome ../input/KSHV-iSLK-72h-1-hac.v6.1.7_redo ../input/KSHV-iSLK-72h-1-hac.v6.1.7_redo/workspace/20220919_1241_MN32174_FAT75712_ab0a3816/fast5_all
+KSHV-iSLK-72h-1 ../../transcriptomes/KSHV-GK18-NC_009333-Renne2025.fasta KSHVtxome ../../input/KSHV-iSLK-72h-1-hac.v6.1.7_redo ../../input/KSHV-iSLK-72h-1-hac.v6.1.7_redo/workspace/20220919_1241_MN32174_FAT75712_ab0a3816/fast5_all

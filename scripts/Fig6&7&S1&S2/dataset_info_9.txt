@@ -1,1 +1,1 @@
-NHDFpolyA-RN7SK-002 ../../transcriptomes/gencode.v47_ENO2.tx.fasta gencode.v47_ENO2.tx ../input/NHDFpolyA-RN7SK-002-hac.v6.1.7 ../input/NHDFpolyA-RN7SK-002-hac.v6.1.7/workspace/20250908_1302_MN32174_FAT84350_7ecd0e78/fast5_all
+NHDFpolyA-RN7SK-002 ../../transcriptomes/gencode.v47_ENO2.tx.fasta gencode.v47_ENO2.tx ../../input/NHDFpolyA-RN7SK-002-hac.v6.1.7 ../../input/NHDFpolyA-RN7SK-002-hac.v6.1.7/workspace/20250908_1302_MN32174_FAT84350_7ecd0e78/fast5_all

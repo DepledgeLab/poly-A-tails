@@ -50,7 +50,8 @@ library(zoo)
 library(dplyr)
 library(glmmTMB)
 
-# Se env based on your specific paths and environment names
+# Set env based on your specific paths and environment names
+setwd("/path/to/poly-A-tails/scripts/Fig6&7&S1&S2")
 Sys.setenv(RETICULATE_CONDA="/path/to/Anaconda3/2022.05/bin/conda")
 reticulate::use_condaenv("r-ninetails")
 
@@ -287,7 +288,7 @@ change_facet_labels <- function(variable, value){
 
 ### Set Path ###################################################################
 
-POLYA_path <- "../data/"
+POLYA_path <- "./data/"
 
 
 ### Set plot themes and aesthetics #############################################
@@ -453,20 +454,20 @@ TB40_72h_residue <- read.table(paste0(POLYA_path,
                                header = TRUE)
 
 # TB40 siCTRL (HCMV)
-TB40CTRL_72h_1_class <- read.table(paste0(POLYA_path2,
+TB40CTRL_72h_1_class <- read.table(paste0(POLYA_path,
                                           "TB40_72h_CTRL-1.guppy.hac.6.1.7.gc47_TB40v1.3_ENO2.tx.uf.human-noMT_protEnc.hcmv.ninetails_pF.class_data_reclass.tsv"),
                                    sep = "\t",
                                    header = TRUE)
-TB40CTRL_72h_2_class <- read.table(paste0(POLYA_path2,
+TB40CTRL_72h_2_class <- read.table(paste0(POLYA_path,
                                           "TB40_72h_CTRL-2.guppy.hac.6.1.7.gc47_TB40v1.3_ENO2.tx.uf.human-noMT_protEnc.hcmv.ninetails_pF.class_data_reclass.tsv"),
                                    sep = "\t",
                                    header = TRUE)
 
-TB40CTRL_72h_1_residue <- read.table(paste0(POLYA_path2,
+TB40CTRL_72h_1_residue <- read.table(paste0(POLYA_path,
                                             "TB40_72h_CTRL-1.guppy.hac.6.1.7.gc47_TB40v1.3_ENO2.tx.uf.human-noMT_protEnc.hcmv.ninetails_pF.residue_data_reclass.tsv"),
                                      sep = "\t",
                                      header = TRUE)
-TB40CTRL_72h_2_residue <- read.table(paste0(POLYA_path2,
+TB40CTRL_72h_2_residue <- read.table(paste0(POLYA_path,
                                             "TB40_72h_CTRL-2.guppy.hac.6.1.7.gc47_TB40v1.3_ENO2.tx.uf.human-noMT_protEnc.hcmv.ninetails_pF.residue_data_reclass.tsv"),
                                      sep = "\t",
                                      header = TRUE)
@@ -474,24 +475,24 @@ TB40CTRL_72h_2_residue <- read.table(paste0(POLYA_path2,
 
 
 # KSHV-iSLK-72h-1
-KSHV_72h_1_class <- read.table(paste0(POLYA_path2,
+KSHV_72h_1_class <- read.table(paste0(POLYA_path,
                                       "KSHV-iSLK-72h-1.guppy.hac.6.1.7.KSHVtxome.uf.ninetails_pF.class_data_reclass.tsv"),
                                sep = "\t",
                                header = TRUE)
 
-KSHV_72h_1_residue <- read.table(paste0(POLYA_path2,
+KSHV_72h_1_residue <- read.table(paste0(POLYA_path,
                                         "KSHV-iSLK-72h-1.guppy.hac.6.1.7.KSHVtxome.uf.ninetails_pF.residue_data_reclass.tsv"),
                                  sep = "\t",
                                  header = TRUE)
 
 
 # NHDFpolyA-RN7SK-002 (Mock)
-NHDFRN7SK_class <- read.table(paste0(POLYA_path2,
+NHDFRN7SK_class <- read.table(paste0(POLYA_path,
                                      "NHDFpolyA-RN7SK-002.guppy.hac.6.1.7gencode.v47_ENO2.tx.uf.polyA.human-noMT_protEnc.ENO2.RN7SK.ninetails_pF.class_data_reclass.tsv"),
                               sep = "\t",
                               header = TRUE)
 
-NHDFRN7SK_residue <- read.table(paste0(POLYA_path2,
+NHDFRN7SK_residue <- read.table(paste0(POLYA_path,
                                        "NHDFpolyA-RN7SK-002.guppy.hac.6.1.7gencode.v47_ENO2.tx.uf.polyA.human-noMT_protEnc.ENO2.RN7SK.ninetails_pF.residue_data_reclass.tsv"),
                                 sep = "\t",
                                 header = TRUE)
@@ -509,22 +510,22 @@ IVTRN7SK_residue <- read.table(paste0(IVTRN7SK_path,
                                header = TRUE)
 
 # HSV2-ARPE19-10h-1
-HSV2_10h_class <- read.table(paste0(POLYA_path2,
+HSV2_10h_class <- read.table(paste0(POLYA_path,
                                     "HSV2-ARPE19-10h-1.guppy.hac.6.1.7.HSV2-MS.tx.uf.ninetails_pF.class_data_reclass.tsv"),
                              sep = "\t",
                              header = TRUE)
 
-HSV2_10h_residue <- read.table(paste0(POLYA_path2,
+HSV2_10h_residue <- read.table(paste0(POLYA_path,
                                       "HSV2-ARPE19-10h-1.guppy.hac.6.1.7.HSV2-MS.tx.uf.ninetails_pF.residue_data_reclass.tsv"),
                                sep = "\t",
                                header = TRUE)
 
 # EMC1-MeWo-96h-polyA (VZV)
-Dumas_96h_class <- read.table(paste0(POLYA_path2,
+Dumas_96h_class <- read.table(paste0(POLYA_path,
                                      "EMC1-MeWo-96h-polyA.guppy.hac.6.1.7.dumas.tx.uf.ninetails_pF.class_data_reclass.tsv"),
                               sep = "\t",
                               header = TRUE)
-Dumas_96h_residue <- read.table(paste0(POLYA_path2,
+Dumas_96h_residue <- read.table(paste0(POLYA_path,
                                        "EMC1-MeWo-96h-polyA.guppy.hac.6.1.7.dumas.tx.uf.ninetails_pF.residue_data_reclass.tsv"),
                                 sep = "\t",
                                 header = TRUE)
@@ -1486,7 +1487,7 @@ results_df_C <- apply_glm(merged_data_reclass_hcmv_human,
                           to_test_timepopint,
                           prediction_C)[[2]]
 
-saveRDS(results_df_C, "../data/pooled_glm_stat_C.rds")
+saveRDS(results_df_C, "./data/pooled_glm_stat_C.rds")
 
 
 ## Apply GLM on mixed poly(A) tailing for G
@@ -1498,7 +1499,7 @@ results_df_G <- apply_glm(merged_data_reclass_hcmv_human,
                           to_test_timepopint,
                           prediction_G)[[2]]
 
-saveRDS(results_df_G, "../data/pooled_glm_stat_G.rds")
+saveRDS(results_df_G, "./data/pooled_glm_stat_G.rds")
 
 ## Apply GLM on mixed poly(A) tailing for U
 i <- 0
@@ -1509,14 +1510,14 @@ results_df_U <- apply_glm(merged_data_reclass_hcmv_human,
                           to_test_timepopint,
                           prediction_U)[[2]]
 
-saveRDS(results_df_U, "../data/pooled_glm_stat_U.rds")
+saveRDS(results_df_U, "./data/pooled_glm_stat_U.rds")
 
 
 # get significant results only and get transcript names
 
-results_df_C <- readRDS("../data/pooled_glm_stat_C.rds")
-results_df_G <- readRDS("../data/pooled_glm_stat_G.rds")
-results_df_U <- readRDS("../data/pooled_glm_stat_U.rds")
+results_df_C <- readRDS("./data/pooled_glm_stat_C.rds")
+results_df_G <- readRDS("./data/pooled_glm_stat_G.rds")
+results_df_U <- readRDS("./data/pooled_glm_stat_U.rds")
 
 
 group_map <- merged_data_reclass_hcmv_human %>% 
@@ -1533,9 +1534,9 @@ results_df_C_sig <- get_GLM_sign(results_df_C, "C")
 results_df_G_sig <- get_GLM_sign(results_df_G, "G")
 results_df_U_sig <- get_GLM_sign(results_df_U, "U")
 
-#saveRDS(results_df_C_sig, "../data/pooled_glm_stat_C_sig.rds")
-#saveRDS(results_df_G_sig, "../data/pooled_glm_stat_G_sig.rds")
-#saveRDS(results_df_U_sig, "../data/pooled_glm_stat_U_sig.rds")
+#saveRDS(results_df_C_sig, "./data/pooled_glm_stat_C_sig.rds")
+#saveRDS(results_df_G_sig, "./data/pooled_glm_stat_G_sig.rds")
+#saveRDS(results_df_U_sig, "./data/pooled_glm_stat_U_sig.rds")
 
 
 # Merge dataframes to one
@@ -2736,7 +2737,7 @@ fig6 <- (p_bar2 & labs(tag = "a")) + (p_pie2n & labs(tag = "b")) + (p_bar1 & lab
               CCCCDDDD
               ") &
   theme(plot.tag = element_text(size = plotlabelsize, face = "bold"))
-grDevices::cairo_pdf("../plots/fig6.pdf",
+grDevices::cairo_pdf("./plots/fig6.pdf",
                      width = 28.125,
                      height = 25)
 fig6
@@ -2752,7 +2753,7 @@ fig7_total <- (free(side = "l", p_box1n) & labs(tag = "a")) + (p_man1n & labs(ta
               ") &
   theme(plot.tag = element_text(size = plotlabelsize, face = "bold"))
 
-grDevices::cairo_pdf("../plots/fig7.pdf",
+grDevices::cairo_pdf("./plots/fig7.pdf",
                      width = 50,
                      height = 25)
 fig7_total
@@ -2764,7 +2765,7 @@ fig7_suppl2 <- p_box1_hum_shared + p_box2_hum_shared + p_box3_hum_shared +
   plot_layout(design = "
               ABC
               ")
-grDevices::cairo_pdf("../plots/figS1.pdf",
+grDevices::cairo_pdf("./plots/figS1.pdf",
                      width = 15,
                      height = 8.3)
 fig7_suppl2
@@ -2773,7 +2774,7 @@ dev.off()
 
 # Suppl. figure 2a/b
 fig6_suppl <- p_pie5
-grDevices::cairo_pdf("../plots/figS2ab.pdf",
+grDevices::cairo_pdf("./plots/figS2ab.pdf",
                      width = 14,
                      height = 9)
 fig6_suppl
@@ -2782,7 +2783,7 @@ dev.off()
 
 # Suppl. figure 2c
 fig7_suppl <- p_line_extend_coll
-grDevices::cairo_pdf("../plots/figS2c.pdf",
+grDevices::cairo_pdf("./plots/figS2c.pdf",
                      width = 16.67,
                      height = 9.38)
 fig7_suppl

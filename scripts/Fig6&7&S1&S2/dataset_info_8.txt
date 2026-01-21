@@ -1,1 +1,1 @@
-RN7SKpolyA-002 ../../transcriptomes/T7_RN7SK_long.fasta RN7SK.tx ../input/RN7SKpolyA-002-hac.v6.1.7 ../input/RN7SKpolyA-002-hac.v6.1.7/workspace
+RN7SKpolyA-002 ../../transcriptomes/T7_RN7SK_long.fasta RN7SK.tx ../../input/RN7SKpolyA-002-hac.v6.1.7 ../../input/RN7SKpolyA-002-hac.v6.1.7/workspace

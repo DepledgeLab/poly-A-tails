@@ -31,6 +31,7 @@ library(stringr)
 library(dplyr)
 
 # Set env based on your specific paths and environment names
+setwd("/path/to/poly-A-tails/scripts/Fig6&7&S1&S2")
 Sys.setenv(RETICULATE_CONDA="/path/to/Anaconda3/2022.05/bin/conda")
 reticulate::use_condaenv("r-ninetails")
 
@@ -116,7 +117,8 @@ postproscess_ninetails <- function(base_path,
   
   class_data <- residue_data <- NULL
   
-  # Apply for human subset only if it exists, otherwise work with viral only
+  # Apply for 2nd (e.g. human) subset only if it exists, otherwise work with
+  # one only
   if(!is.null(groupname_2)){
     # Load RDS files
     rds_2 <- readRDS(paste0(base_path, basename, ".", groupname_2, ".ninetails_pF.rds"))
@@ -128,14 +130,14 @@ postproscess_ninetails <- function(base_path,
     class_2$group <- group_id_2
     residue_2$group <- group_id_2
     
-    # merge human and viral dataframes
+    # merge both (i.e. human and viral) dataframes
     class_data <- rbind(class_1, class_2)
     residue_data <- rbind(residue_1, residue_2)
     
   } else {
     
-    class_data <- viral_class
-    residue_data <- viral_residue
+    class_data <- class_1
+    residue_data <- residue_1
     
   }
   
@@ -223,21 +225,21 @@ postproscess_ninetails <- function(base_path,
 ### TB40 24h ###################################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "TB40_24h"
-seqsum_path <- "../input/TB40_24h-hac.v6.1.7/"
-workspace_path <- "../input/TB40_24h-hac.v6.1.7/workspace/fast5_pass/"
+seqsum_path <- "./input/TB40_24h-hac.v6.1.7/"
+workspace_path <- "./input/TB40_24h-hac.v6.1.7/workspace/fast5_pass/"
 name_extension <- ".TB40txome.GRCh38.tx-noMT_protEnc.ninetails_pF"
 
 # human
 groupname_hum <- "GRCh38.tx.polyA.noMT_protEnc"
 group_id_hum <- "human"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_hum, seqsum_path, workspace_path)
 
 # hcmv
 groupname_vir <- "TB40txome.polyA"
 group_id_vir <- "hcmv"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_vir, seqsum_path, workspace_path)
 
 postproscess_ninetails(base_path = base_path,
                        basename = basename,
@@ -251,21 +253,21 @@ postproscess_ninetails(base_path = base_path,
 ### TB40 48h ###################################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "TB40_48h"
-seqsum_path <- "../input/TB40_48h-hac.v6.1.7/"
-workspace_path <- "../input/TB40_48h-hac.v6.1.7/workspace/20200130_1934_MN24978_FAL86847_be4e2264/fast5_all/"
+seqsum_path <- "./input/TB40_48h-hac.v6.1.7/"
+workspace_path <- "./input/TB40_48h-hac.v6.1.7/workspace/20200130_1934_MN24978_FAL86847_be4e2264/fast5_all/"
 name_extension <- ".TB40txome.GRCh38.tx-noMT_protEnc.ninetails_pF"
 
 # human
 groupname_hum <- "GRCh38.tx.polyA.noMT_protEnc"
 group_id_hum <- "human"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_hum, seqsum_path, workspace_path)
 
 # hcmv
 groupname_vir <- "TB40txome.polyA"
 group_id_vir <- "hcmv"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_vir, seqsum_path, workspace_path)
 
 postproscess_ninetails(base_path = base_path,
                        basename = basename,
@@ -279,21 +281,21 @@ postproscess_ninetails(base_path = base_path,
 ### TB40 72h ###################################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "TB40_72h"
-seqsum_path <- "../input/TB40_72h-hac.v6.1.7/"
-workspace_path <- "../input/TB40_72h-hac.v6.1.7/workspace/20200207_1844_MN24978_FAL81867_7f514654/fast5_all/"
+seqsum_path <- "./input/TB40_72h-hac.v6.1.7/"
+workspace_path <- "./input/TB40_72h-hac.v6.1.7/workspace/20200207_1844_MN24978_FAL81867_7f514654/fast5_all/"
 name_extension <- ".TB40txome.GRCh38.tx-noMT_protEnc.ninetails_pF"
 
 # human
 groupname_hum <- "GRCh38.tx.polyA.noMT_protEnc"
 group_id_hum <- "human"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_hum, seqsum_path, workspace_path)
 
 # hcmv
 groupname_vir <- "TB40txome.polyA"
 group_id_vir <- "hcmv"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_vir, seqsum_path, workspace_path)
 
 postproscess_ninetails(base_path = base_path,
                        basename = basename,
@@ -307,21 +309,21 @@ postproscess_ninetails(base_path = base_path,
 ### TB40_72h_CTRL-1 ############################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "TB40_72h_CTRL-1.guppy.hac.6.1.7.gc47_TB40v1.3_ENO2.tx.uf"
-seqsum_path <- "../input/TB40_72h_CTRL-1-hac.v6.1.7/"
-workspace_path <- "../input/TB40_72h_CTRL-1-hac.v6.1.7/workspace/20201130_1639_MN24978_FAO99310_497d8769/fast5_all/"
+seqsum_path <- "./input/TB40_72h_CTRL-1-hac.v6.1.7/"
+workspace_path <- "./input/TB40_72h_CTRL-1-hac.v6.1.7/workspace/20201130_1639_MN24978_FAO99310_497d8769/fast5_all/"
 name_extension <- ".human-noMT_protEnc.hcmv.ninetails_pF"
 
 # human
 groupname_hum <- "polyA.human.noMT_protEnc"
 group_id_hum <- "human"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_hum, seqsum_path, workspace_path)
 
 # hcmv
 groupname_vir <- "polyA.hcmv"
 group_id_vir <- "hcmv"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_vir, seqsum_path, workspace_path)
 
 postproscess_ninetails(base_path = base_path,
                        basename = basename,
@@ -335,21 +337,21 @@ postproscess_ninetails(base_path = base_path,
 ### TB40_72h_CTRL-2 ############################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "TB40_72h_CTRL-2.guppy.hac.6.1.7.gc47_TB40v1.3_ENO2.tx.uf"
-seqsum_path <- "../input/TB40_72h_CTRL-2-hac.v6.1.7/"
-workspace_path <- "../input/TB40_72h_CTRL-2-hac.v6.1.7/workspace/20210506_1601_MN24978_FAP02780_8131a338/fast5_all/"
+seqsum_path <- "./input/TB40_72h_CTRL-2-hac.v6.1.7/"
+workspace_path <- "./input/TB40_72h_CTRL-2-hac.v6.1.7/workspace/20210506_1601_MN24978_FAP02780_8131a338/fast5_all/"
 name_extension <- ".human-noMT_protEnc.hcmv.ninetails_pF"
 
 # human
 groupname_hum <- "polyA.human.noMT_protEnc"
 group_id_hum <- "human"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_hum, seqsum_path, workspace_path)
 
 # hcmv
 groupname_vir <- "polyA.hcmv"
 group_id_vir <- "hcmv"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_vir, seqsum_path, workspace_path)
 
 postproscess_ninetails(base_path = base_path,
                        basename = basename,
@@ -363,10 +365,10 @@ postproscess_ninetails(base_path = base_path,
 ### HSV2-ARPE19-10h-1 ##########################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "HSV2-ARPE19-10h-1.guppy.hac.6.1.7"
-seqsum_path <- "../input//HSV2-ARPE19-10h-1-hac.v6.1.7_redo/"
-workspace_path <- "../input/HSV2-ARPE19-10h-1-hac.v6.1.7_redo/workspace/20211025_1359_MN26830_FAR15445_e81919df/fast5_pass/"
+seqsum_path <- "./input//HSV2-ARPE19-10h-1-hac.v6.1.7_redo/"
+workspace_path <- "./input/HSV2-ARPE19-10h-1-hac.v6.1.7_redo/workspace/20211025_1359_MN26830_FAR15445_e81919df/fast5_pass/"
 name_extension <- ".HSV2-MS.tx.uf.ninetails_pF"
 
 # human
@@ -376,7 +378,7 @@ group_id_hum <- NULL
 # hsv2
 groupname_vir <- "HSV2-MS.uf.polyA"
 group_id_vir <- "HSV2"
-do_ninetails_runs_1(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_1(base_path, basename, groupname_vir, seqsum_path, workspace_path)
 
 postproscess_ninetails(base_path = base_path,
                        basename = basename,
@@ -390,10 +392,10 @@ postproscess_ninetails(base_path = base_path,
 ### EMC1-MeWo-96h ##############################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "EMC1-MeWo-96h-polyA.guppy.hac.6.1.7"
-seqsum_path <- "../input/EMC1-MeWo-96h-polyA-hac.v6.1.7_redo/"
-workspace_path <- "../input/EMC1-MeWo-96h-polyA-hac.v6.1.7_redo/workspace/20230308_1540_MN32174_FAT75568_f6dd48b0/fast5_all/"
+seqsum_path <- "./input/EMC1-MeWo-96h-polyA-hac.v6.1.7_redo/"
+workspace_path <- "./input/EMC1-MeWo-96h-polyA-hac.v6.1.7_redo/workspace/20230308_1540_MN32174_FAT75568_f6dd48b0/fast5_all/"
 name_extension <- ".dumas.tx.uf.ninetails_pF"
 
 # human
@@ -403,7 +405,7 @@ group_id_hum <- NULL
 # vzv
 groupname_vir <- "dumas.uf.polyA"
 group_id_vir <- "VZV"
-do_ninetails_runs_0(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_0(base_path, basename, groupname_vir, seqsum_path, workspace_path)
 
 postproscess_ninetails(base_path = base_path,
                        basename = basename,
@@ -417,10 +419,10 @@ postproscess_ninetails(base_path = base_path,
 ### KSHV-iSLK-72h-1-hac.v6.1.7_redo ############################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "KSHV-iSLK-72h-1.guppy.hac.6.1.7"
-seqsum_path <- "../input/KSHV-iSLK-72h-1-hac.v6.1.7_redo/"
-workspace_path <- "../input/KSHV-iSLK-72h-1-hac.v6.1.7_redo/workspace/20220919_1241_MN32174_FAT75712_ab0a3816/fast5_all/"
+seqsum_path <- "./input/KSHV-iSLK-72h-1-hac.v6.1.7_redo/"
+workspace_path <- "./input/KSHV-iSLK-72h-1-hac.v6.1.7_redo/workspace/20220919_1241_MN32174_FAT75712_ab0a3816/fast5_all/"
 name_extension <- ".KSHVtxome.uf.ninetails_pF"
 
 # human
@@ -430,7 +432,7 @@ group_id_hum <- NULL
 # kshv
 groupname_vir <- "KSHVtxome.uf.polyA"
 group_id_vir <- "kshv"
-do_ninetails_runs_0(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_0(base_path, basename, groupname_vir, seqsum_path, workspace_path)
 
 postproscess_ninetails(base_path = base_path,
                        basename = basename,
@@ -444,16 +446,16 @@ postproscess_ninetails(base_path = base_path,
 ### NHDFRN7SKpolyA-002 (Mock) ##################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "NHDFpolyA-RN7SK-002.guppy.hac.6.1.7"
-seqsum_path <- "../input/NHDFpolyA-RN7SK-002-hac.v6.1.7/"
-workspace_path <- "../input/NHDFpolyA-RN7SK-002-hac.v6.1.7/workspace/20250908_1302_MN32174_FAT84350_7ecd0e78/fast5_all/"
+seqsum_path <- "./input/NHDFpolyA-RN7SK-002-hac.v6.1.7/"
+workspace_path <- "./input/NHDFpolyA-RN7SK-002-hac.v6.1.7/workspace/20250908_1302_MN32174_FAT84350_7ecd0e78/fast5_all/"
 name_extension <- "gencode.v47_ENO2.tx.uf.polyA.human.noMT_protEnc.ENO2.RN7SK.ninetails_pF"
 
 # human
 groupname_hum <- "gencode.v47_ENO2.tx.uf.polyA.human.noMT_protEnc"
 group_id_hum <- "human"
-do_ninetails_runs_0(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_0(base_path, basename, groupname_hum, seqsum_path, workspace_path)
 
 # viral
 groupname_vir <- NULL
@@ -471,16 +473,16 @@ postproscess_ninetails(base_path = base_path,
 ### IVT RN7SKpolyA-002 #########################################################
 
 ninetails_run <- groupname_hum <- groupname_vir <- group_id_hum <- group_id_vir <- NULL
-base_path <- "../data/"
+base_path <- "./data/"
 basename <- "RN7SKpolyA-002.guppy.hac.6.1.7"
-seqsum_path <- "../input/RN7SKpolyA-002-hac.v6.1.7/"
-workspace_path <- "../input/RN7SKpolyA-002-hac.v6.1.7/workspace/20250918_1051_MN32174_FAV72175_a0bce578/fast5_all"
+seqsum_path <- "./input/RN7SKpolyA-002-hac.v6.1.7/"
+workspace_path <- "./input/RN7SKpolyA-002-hac.v6.1.7/workspace/20250918_1051_MN32174_FAV72175_a0bce578/fast5_all"
 name_extension <- ".RN7SK.tx.uf.ninetails_pF"
 
 # ivt
 groupname_ivt <- "RN7SK.tx.uf.polyA"
 group_id_ivt <- "IVT_RN7SK"
-do_ninetails_runs_0(base_path, basename, groupname, seqsum_path, workspace_path)
+do_ninetails_runs_0(base_path, basename, groupname_ivt, seqsum_path, workspace_path)
 
 #
 groupname_2 <- NULL

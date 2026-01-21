@@ -1,7 +1,7 @@
-# These two function reasignments fix an issue where Ninetails does not read
-# some fast5 fles properly, when multiple basecall groups exist. The functions
-# stay the same, only their names got changed to 'new_*' and one line got
-# changed. This is marked with '[CHANGE MADE IN THE FOLLOWING LINE]'.
+# These two function reassignments fix an issue where Ninetails does not read
+# some FAST5 files properly when multiple basecall groups exist. The functions
+# themselves are untouched, only their names got changed to 'new_*' and one line
+# got changed. This is marked with '[CHANGE MADE IN THE FOLLOWING LINE]'.
 
 new_check_tails <- function(nanopolish,
                             sequencing_summary,

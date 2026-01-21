@@ -1,0 +1,1 @@
+Folder strucutre for the original raw FAST5 files.
